@@ -1,0 +1,7 @@
+.netrwhist
+autoload/pathogen.vim
+
+ftdetect/nginx.vim
+ftdetect/node.vim
+indent/nginx.vim
+syntax/nginx.vim

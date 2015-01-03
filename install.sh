@@ -12,6 +12,6 @@ curl -Ls https://raw.githubusercontent.com/moll/vim-node/master/ftdetect/node.vi
 
 echo "Installing nginx syntax..."
 curl -Ls http://nginx.org/download/nginx-1.7.5.tar.gz | \
-  tar xfvz - -C . --strip-components 3 "nginx-1.7.5/contrib/vim/*"
+  tar xfvz - -C . --strip-components 3 --wildcards "nginx-1.7.5/contrib/vim/*"
 
 echo "Done."

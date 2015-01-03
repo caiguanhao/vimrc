@@ -26,3 +26,17 @@ RUN git clone https://github.com/ggreer/the_silver_searcher ag
 RUN apt-get install -y --no-install-recommends automake pkg-config libpcre3-dev liblzma-dev
 
 RUN cd ag && ./build.sh && make install
+
+RUN apt-get install -y --no-install-recommends golang mercurial
+
+ENV GOPATH /root/go
+
+ADD . /root/.vim/
+
+RUN cp /root/.vim/vimrc /root/.vimrc
+
+RUN /root/.vim/install.sh
+
+RUN git submodule update --init --recursive
+
+RUN vim +GoInstallBinaries +qall

@@ -3,6 +3,66 @@ vimrc
 
 My vimrc file. Tested on Ubuntu/Mac with vim 7.4.
 
+Keys
+----
+
+|Key| Meaning
+|---|---
+| a | enter insertion mode after current character
+| b | back word
+| c | change command
+| d | delete command
+| e | end of word
+| f | find character after cursor in current line
+| g | UNBOUND
+| h | move left one character
+| i | enter insertion mode before current character
+| j | move down one line
+| k | move up one line
+| l | move right one character
+| m | mark current line and position
+| n | repeat last search
+| o | open line below and enter insertion mode
+| p | put buffer after cursor
+| q | UNBOUND
+| r | replace single character at cursor
+| s | substitute single character at cursor
+| t | same as "f" but cursor moves to just before found character
+| u | undo
+| v | UNBOUND
+| w | move foreward one word
+| x | delete single character
+| y | yank command
+| z | position current line
+| A | enter insertion mode after end of line
+| B | move back one Word
+| C | change to end of line
+| D | delete to end of line
+| E | move to end of Word
+| F | backwards version of "f"
+| G | goto line number prefixed, or goto end if none
+| H | home cursor - goto first line on screen
+| I | enter insertion mode before first non-whitespace character
+| J | join current line with next line
+| K | UNBOUND
+| L | goto last line on screen
+| M | goto middle line on screen
+| N | repeat last search, but in opposite direction of original search
+| O | open line above and enter insertion mode
+| P | put buffer before cursor
+| R | replace mode - replaces through end of current line, then inserts
+| S | substitute entire line - deletes line, enters insertion mode
+| T | backwards version of "t"
+| U | restores line to state when cursor was moved into it
+| V | UNBOUND
+| W | foreward Word
+| X | delete backwards single character
+| Y | yank entire line
+| Z | first half of quick save-and-exit
+
+Install
+-------
+
 If you have `~/.vim` and/or `~/.vimrc`, rename them/it.
 
 ```

@@ -24,6 +24,8 @@ if [[ ! -f ftdetect/nginx.vim ]]; then
     tar xfvz - -C . --strip-components 3 --wildcards "nginx-1.7.5/contrib/vim/*"
 fi
 
+git submodule update --init --recursive
+
 echo "Copying vimrc..."
 cp $SCRIPTDIR/vimrc ~/.vimrc
 

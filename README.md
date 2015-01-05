@@ -59,6 +59,38 @@ Keys
 | X | delete backwards single character
 | Y | yank entire line
 | Z | first half of quick save-and-exit
+| ! | shell command filter
+| @ | vi eval
+| # | UNBOUND
+| $ | move to end of line
+| % | match nearest [],(),{} on line, to its match (same line or others)
+| ^ | move to first non-whitespace character of line
+| & | repeat last ex substitution (":s ...") not including modifiers
+| * | UNBOUND
+| ( | move to previous sentence
+| ) | move to next sentence
+| \ | UNBOUND
+| | | move to column zero
+| - | move to first non-whitespace of previous line
+| _ | similar to "^" but uses numeric prefix oddly
+| = | UNBOUND
+| + | move to first non-whitespace of next line
+| [ | move to previous "{ ... }" section
+| ] | move to next "{ ... }" section
+| { | move to previous blank-line separated section
+| } | move to next blank-line separated section
+| ; | repeat last "f", "F", "t", or "T" command
+| ' | move to marked line, first non-whitespace
+| ` | move to marked line, memorized column
+| : | ex-submode
+| " | access numbered buffer; load or access lettered buffer
+| ~ | reverse case of current character and move cursor forward
+| , | reverse direction of last "f", "F", "t", or "T" command
+| . | repeat last text-changing command
+| / | search forward
+| < | unindent command
+| > | indent command
+| ? | search backward
 
 Install
 -------

@@ -40,3 +40,6 @@
 [submodule "bundle/vim-surround"]
 	path = bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule "bundle/tcomment_vim"]
+	path = bundle/tcomment_vim
+	url = git@github.com:caiguanhao/tcomment_vim.git

@@ -116,7 +116,9 @@ or the README file of each plugin.
 If you want to use vim inside a Docker container, build it first.
 
 ```
-docker build -t vim .
+./build.sh --slim
+# or 
+./build.sh --full
 ```
 
 Warning: This vim config file is suitable for editing small files.

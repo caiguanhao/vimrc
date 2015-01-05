@@ -2,6 +2,8 @@ FROM ubuntu:14.10
 
 MAINTAINER Cai Guanhao (caiguanhao@gmail.com)
 
+RUN mkdir -p /root/.vim/bundle
+
 WORKDIR /root/.vim
 
 RUN test $(python3 -c 'from urllib.request import urlopen; print(urlopen \
@@ -11,15 +13,28 @@ RUN test $(python3 -c 'from urllib.request import urlopen; print(urlopen \
 
 RUN apt-get update
 
-RUN apt-get install -y --no-install-recommends git vim curl ca-certificates silversearcher-ag
+RUN apt-get install -y --no-install-recommends git vim curl ca-certificates cmake build-essential python-dev
+
+RUN cd bundle && git clone https://github.com/Valloric/YouCompleteMe
+
+RUN cd bundle/YouCompleteMe && git submodule update --init --recursive
+
+RUN cd bundle/YouCompleteMe && ./install.sh --clang-completer
+
+RUN git clone https://github.com/ggreer/the_silver_searcher ag
+
+RUN apt-get install -y --no-install-recommends automake pkg-config libpcre3-dev liblzma-dev
+
+RUN cd ag && ./build.sh && make install
+
+RUN apt-get install -y --no-install-recommends golang mercurial
+
+ENV GOPATH /root/go
 
 ADD . /root/.vim/
 
-RUN rm -rf bundle/YouCompleteMe bundle/vim-go
-RUN git rm --cached bundle/YouCompleteMe bundle/vim-go
-RUN git config -f .gitmodules --remove-section submodule.bundle/YouCompleteMe
-RUN git config -f .gitmodules --remove-section submodule.bundle/vim-go
-
-RUN ./install.sh
+RUN /root/.vim/install.sh
 
 RUN git submodule update --init --recursive
+
+RUN vim +GoInstallBinaries +qall

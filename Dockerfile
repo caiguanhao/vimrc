@@ -33,8 +33,6 @@ ENV GOPATH /root/go
 
 ADD . /root/.vim/
 
-RUN cp /root/.vim/vimrc /root/.vimrc
-
 RUN /root/.vim/install.sh
 
 RUN git submodule update --init --recursive

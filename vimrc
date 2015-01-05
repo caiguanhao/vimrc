@@ -25,10 +25,13 @@ hi Visual      term=NONE cterm=NONE ctermfg=0 ctermbg=230
 hi TabLine     term=NONE cterm=NONE ctermfg=0 ctermbg=230
 hi TabLineSel  term=bold cterm=bold gui=bold
 hi TabLineFill term=bold cterm=bold ctermfg=0 ctermbg=230
+hi Comment     ctermfg=gray
 
 " keys
 inoremap <C-c> <Esc>
 
+nnoremap <C-k> <C-b>
+nnoremap <C-b> <NOP>
 nnoremap <C-\> :se paste! paste?<CR>
 nnoremap <Tab> <C-W><C-W>
 nnoremap <S-Tab> <C-W><C-p>
@@ -38,7 +41,7 @@ nnoremap \\ :rightbelow new<CR>
 nnoremap <CR> <C-e>M
 nnoremap <BS> <C-y>M
 
-nnoremap F :Ag<Space>
+nnoremap <C-_> :Ag<Space>
 nnoremap K :silent exe '!open dash://'.expand("<cword>")<CR>:redraw!<CR>
 nnoremap Q :q<CR>
 
@@ -139,7 +142,7 @@ let g:go_highlight_structs = 1
 let g:go_fmt_fail_silently = 1
 let g:go_doc_keywordprg_enabled = 0
 
-au FileType go nnoremap <C-k> :exe 'silent! GoImports'<CR>:exe 'silent! GoImport '.expand("<cword>")<CR>zz
+au FileType go nnoremap <C-i> :exe 'silent! GoImports'<CR>:exe 'silent! GoImport '.expand("<cword>")<CR>zz
 
 " multiple cursors
 
@@ -148,3 +151,8 @@ let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<C-c>'
+
+" comment
+
+let g:tcommentMapLeader1=''
+let g:tcommentMapLeader2=''

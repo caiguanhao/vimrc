@@ -15,11 +15,6 @@ RUN apt-get install -y --no-install-recommends git vim curl ca-certificates silv
 
 ADD . /root/.vim/
 
-RUN rm -rf bundle/YouCompleteMe bundle/vim-go
-RUN git rm --cached bundle/YouCompleteMe bundle/vim-go
-RUN git config -f .gitmodules --remove-section submodule.bundle/YouCompleteMe
-RUN git config -f .gitmodules --remove-section submodule.bundle/vim-go
-
 RUN ./install.sh
 
 RUN git submodule update --init --recursive

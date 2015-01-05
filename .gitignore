@@ -5,3 +5,6 @@ ftdetect/nginx.vim
 ftdetect/node.vim
 indent/nginx.vim
 syntax/nginx.vim
+
+bundle/YouCompleteMe
+bundle/vim-go

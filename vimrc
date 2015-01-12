@@ -43,7 +43,8 @@ nnoremap <BS> <C-y>M
 
 nnoremap <C-_> :Ag<Space>
 nnoremap K :silent exe '!open dash://'.expand("<cword>")<CR>:redraw!<CR>
-nnoremap Q :q<CR>
+nnoremap <silent> Q :if(len(filter(range(1,bufnr('$')),'buflisted(v:val)'))==1)
+                  \ <CR>:q<CR>else<CR>:bd<CR>endif<CR>
 
 inoremap <Left>  <NOP>
 inoremap <Right> <NOP>

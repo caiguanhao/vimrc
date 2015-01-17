@@ -21,6 +21,7 @@ au BufRead,BufNewFile */nginx/**.conf set ft=nginx
 
 " colors
 
+hi Search      term=NONE cterm=NONE ctermfg=0 ctermbg=cyan
 hi Visual      term=NONE cterm=NONE ctermfg=0 ctermbg=230
 hi TabLine     term=NONE cterm=NONE ctermfg=0 ctermbg=230
 hi TabLineSel  term=bold cterm=bold gui=bold
@@ -33,15 +34,15 @@ inoremap <C-c> <Esc>
 nnoremap <C-k> <C-b>
 nnoremap <C-b> <NOP>
 nnoremap <C-\> :se paste! paste?<CR>
-nnoremap <Tab> <C-W><C-W>
-nnoremap <S-Tab> <C-W><C-p>
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
 nnoremap <Space> :se hls! hls?<CR>
 nnoremap \| :rightbelow vnew<CR>
 nnoremap \\ :rightbelow new<CR>
 nnoremap <CR> <C-e>M
 nnoremap <BS> <C-y>M
 
-nnoremap <C-_> :Ag<Space>
+nnoremap <C-_> :tabnew<Space>\|<Space>Ag!<Space>
 nnoremap K :silent exe '!open dash://'.expand("<cword>")<CR>:redraw!<CR>
 nnoremap <silent> Q :if(len(filter(range(1,bufnr('$')),'buflisted(v:val)'))==1)
                   \ <CR>:q<CR>else<CR>:bd<CR>endif<CR>
@@ -126,7 +127,7 @@ let g:ctrlp_custom_ignore = {
 
 " Ag
 
-let g:ackprg = 'ag --ignore "*.min.*" --nocolor --nogroup --column'
+let g:agprg = 'ag --ignore "*.min.*" --nocolor --nogroup --column'
 let g:ag_lhandler = 'topleft lopen'
 let g:ag_qhandler = 'topleft copen'
 " hide ag stdout

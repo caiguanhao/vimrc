@@ -4,18 +4,16 @@ set -e
 
 SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-cd ~/.vim
-
 if [[ ! -f autoload/pathogen.vim ]]; then
   echo "Installing pathogen..."
   mkdir -p autoload
-  curl -Ls https://github.com/tpope/vim-pathogen/raw/master/autoload/pathogen.vim -o autoload/pathogen.vim
+  curl -Ls https://github.com/tpope/vim-pathogen/raw/91e6378908721d20514bbe5d18d292a0a15faf0c/autoload/pathogen.vim -o autoload/pathogen.vim
 fi
 
 if [[ ! -f ftdetect/node.vim ]]; then
   echo "Installing node.vim..."
   mkdir -p ftdetect
-  curl -Ls https://raw.githubusercontent.com/moll/vim-node/master/ftdetect/node.vim -o ftdetect/node.vim
+  curl -Ls https://raw.githubusercontent.com/moll/vim-node/3a7d48a9c69e09ab5becf6ceab4ecc2f9851568f/ftdetect/node.vim -o ftdetect/node.vim
 fi
 
 if [[ ! -f ftdetect/nginx.vim ]]; then

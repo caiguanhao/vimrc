@@ -15,7 +15,8 @@ se bs=indent,eol,start
 se encoding=utf-8
 se t_Co=256
 
-au FileType javascript,css,less,html,yaml,json,sh se et sw=2 ts=2 sts=2
+au FileType javascript,css,less,html,yaml,json,sh,ruby se et sw=2 ts=2 sts=2
+au FileType python se et sw=4 ts=4 sts=4
 
 au BufRead,BufNewFile */nginx/**.conf set ft=nginx
 

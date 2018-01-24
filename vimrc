@@ -17,7 +17,7 @@ se t_Co=256
 
 se wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
-au FileType javascript,css,less,html,yaml,json,sh,ruby,eruby se et sw=2 ts=2 sts=2
+au FileType javascript,css,less,html,yaml,json,sh,ruby,eruby,vue,solidity se et sw=2 ts=2 sts=2
 au FileType python se et sw=4 ts=4 sts=4
 
 au BufRead,BufNewFile */nginx/**.conf set ft=nginx
@@ -146,6 +146,7 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_fmt_fail_silently = 1
 let g:go_doc_keywordprg_enabled = 0
+let g:go_version_warning = 0
 
 au FileType go nnoremap <C-i> :exe 'silent! GoImports'<CR>:exe 'silent! GoImport '.expand("<cword>")<CR>zz
 

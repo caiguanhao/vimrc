@@ -7,4 +7,3 @@ indent/nginx.vim
 syntax/nginx.vim
 
 bundle/YouCompleteMe
-bundle/vim-go

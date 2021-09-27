@@ -1,5 +1,3 @@
-execute pathogen#infect()
-
 syntax on
 filetype plugin indent on
 
@@ -9,18 +7,18 @@ se nowritebackup
 se noswapfile
 se autoindent
 se clipboard=unnamed
-se rnu nu
+se nu
 se ru
 se bs=indent,eol,start
 se encoding=utf-8
 se t_Co=256
+se modelines=5
 
 se wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
-au FileType javascript,css,less,html,yaml,json,sh,ruby,eruby,vue,solidity se et sw=2 ts=2 sts=2
-au FileType python se et sw=4 ts=4 sts=4
-
-au BufRead,BufNewFile */nginx/**.conf set ft=nginx
+au FileType bash,sh,zsh,javascript,ruby,eruby,html,vue,json,yaml,less,css setl sw=2 ts=2 sts=2 et
+au FileType go,make setl noet sw=8 ts=8 sts=8
+au FileType python setl et sw=4 ts=4 sts=4
 
 " colors
 
@@ -34,18 +32,20 @@ hi Comment     ctermfg=gray
 " keys
 inoremap <C-c> <Esc>
 
+nnoremap <C-j> <C-f>
 nnoremap <C-k> <C-b>
 nnoremap <C-b> <NOP>
+nnoremap <silent> <C-p> :call fzf#run(fzf#wrap(fzf#vim#with_preview({ 'source': 'git ls-files --exclude-standard --cached --others', 'sink': 'tabedit' })))<CR>
+nnoremap <silent> <C-f> :Rg<CR>
 nnoremap <C-\> :se paste! paste?<CR>
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <Space> :se hls! hls?<CR>
 nnoremap \| :rightbelow vnew<CR>
 nnoremap \\ :rightbelow new<CR>
-nnoremap <CR> <C-e>M
-nnoremap <BS> <C-y>M
+" nnoremap <CR> <C-e>M
+" nnoremap <BS> <C-y>M
 
-nnoremap <C-_> :tabnew<Space>\|<Space>Ag!<Space>
 nnoremap K :silent exe '!open dash://'.expand("<cword>")<CR>:redraw!<CR>
 nnoremap <silent> Q :if(len(filter(range(1,bufnr('$')),'buflisted(v:val)'))==1)
                   \ <CR>:q<CR>else<CR>:bd<CR>endif<CR>
@@ -68,8 +68,8 @@ command WQ wq
 command Wq wq
 command W w
 command Q q
-command RC e ~/.vimrc
-command BD 1,100bd
+
+let g:fzf_layout = { 'window': '-tabnew' }
 
 " EasyAlign
 
@@ -77,7 +77,6 @@ vmap <Enter> <Plug>(EasyAlign)
 
 " Airline
 
-set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:gitgutter_signs = 0
 function! AirlineInit()
@@ -88,78 +87,30 @@ function! AirlineInit()
 	let g:airline_section_y = airline#section#create(['%B'])
 	let g:airline_section_z = airline#section#create_right(['%l','%c'])
 endfunction
-autocmd VimEnter * call AirlineInit()
-
-" indentLine
-
-let g:indentLine_color_term = 242
-let g:indentLine_fileTypeExclude = ['json']
-let g:indentLine_char = '⋮'
-
-" ycm
-
-let g:ycm_complete_in_comments = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-set completeopt-=preview
-let g:ycm_semantic_triggers =  {
-    \ 'c' : ['->', '.'],
-    \ 'objc' : ['->', '.'],
-    \ 'ocaml' : ['.', '#'],
-    \ 'cpp,objcpp' : ['->', '.', '::'],
-    \ 'perl' : ['->'],
-    \ 'php' : ['->', '::'],
-    \ 'cs,java,javascript,d,python,perl6,scala,vb,elixir,go' : ['.'],
-    \ 'vim' : ['re![_a-zA-Z]+[_\w]*\.'],
-    \ 'ruby' : ['.', '::'],
-    \ 'lua' : ['.', ':'],
-    \ 'erlang' : [':'],
-    \ }
-let g:ycm_semantic_triggers['less,css'] = ['re!^\s*', 're![;:]\s*']
-let g:ycm_semantic_triggers['html'] = ['<', 're!<.*\s']
-
-" Ctrl-P
-
-let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<c-t>'],
-    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-    \ }
-let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/](node_modules|bower_components|dist)|(\.(git|hg|svn))$',
-    \ 'file': '\v\.(exe|so|dll|gif|jpg|png|ico|jpeg)$',
-    \ }
-
-" Ag
-
-let g:agprg = 'ag --ignore "*.min.*" --nocolor --nogroup --column'
-let g:ag_lhandler = 'topleft lopen'
-let g:ag_qhandler = 'topleft copen'
-" hide ag stdout
-set shellpipe=>
-" let &shellpipe="&>"
+autocmd User AirlineAfterInit call AirlineInit()
 
 " vim-go
 
-let g:go_fmt_command = "goimports"
-let g:go_fmt_autosave = 1
+let g:go_highlight_operators = 1
 let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_fmt_fail_silently = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_variable_declarations = 1
 let g:go_doc_keywordprg_enabled = 0
-let g:go_version_warning = 0
+let g:go_fmt_fail_silently = 1
 
-au FileType go nnoremap <C-i> :exe 'silent! GoImports'<CR>:exe 'silent! GoImport '.expand("<cword>")<CR>zz
+" vim-visual-multi
 
-" multiple cursors
+fun! VM_Start()
+	nmap <buffer> <C-C> <Esc>
+	imap <buffer> <C-C> <Esc>
+endfun
 
-let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
-let g:multi_cursor_quit_key='<C-c>'
-nnoremap <C-c> :call multiple_cursors#quit()<CR>
-
-" comment
-
-let g:tcommentMapLeader1=''
-let g:tcommentMapLeader2=''
+fun! VM_Exit()
+	nunmap <buffer> <C-C>
+	iunmap <buffer> <C-C>
+endfun

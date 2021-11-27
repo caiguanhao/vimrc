@@ -1,31 +1,26 @@
 vimrc
 =====
 
-My vimrc file. Tested on Ubuntu/Mac with vim 7.4.
+My vimrc file.
 
 Install
 -------
 
 If you have `~/.vim` and/or `~/.vimrc`, rename/remove them/it.
-By default, it will install Slim version.
 
 ```
-git clone https://github.com/caiguanhao/vimrc.git ~/.vim
-cd ~/.vim
-./install.sh
-
-# install ag from package manager or build it from source
-# sudo apt-get install silversearcher-ag
+git clone --recursive https://github.com/caiguanhao/vimrc.git .vim
+ln -s ~/.vim/vimrc ~/.vimrc
+brew install rg fzf
+brew install bat # if you want to highlight file
 ```
 
-The other version, Full version, has YouCompleteMe, which is very,
-big, it may take a long time to download and compile.
+Open vim, run these commands:
 
-To use this version, use git checkout command to switch to the branch.
-
-If you want to use vim inside a Docker container, build it first.
-
-Warning: This vim config file is suitable for editing small files.
+```
+# make sure you have installed go first
+:GoInstallBinaries
+```
 
 LICENSE: MIT
 

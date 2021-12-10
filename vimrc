@@ -48,8 +48,8 @@ nnoremap \\ :rightbelow new<CR>
 " nnoremap <CR> <C-e>M
 " nnoremap <BS> <C-y>M
 
-" nnoremap K :silent exe '!open dash://'.expand("<cword>")<CR>:redraw!<CR>
-nnoremap K :silent exe '!open -na Google\ Chrome --args "--app=https://devdocs.io/\#q='.expand("<cword>").'"'<CR>:redraw!<CR>
+nnoremap K :silent exe '!open dash://'.expand("<cword>")<CR>:redraw!<CR>
+" nnoremap K :silent exe '!open -na Google\ Chrome --args "--app=https://devdocs.io/\#q='.expand("<cword>").'"'<CR>:redraw!<CR>
 
 nnoremap <silent> Q :if(len(filter(range(1,bufnr('$')),'buflisted(v:val)'))==1)
                   \ <CR>:q<CR>else<CR>:bd<CR>endif<CR>
@@ -118,3 +118,20 @@ fun! VM_Exit()
 	nunmap <buffer> <C-C>
 	iunmap <buffer> <C-C>
 endfun
+
+" rust.vim
+
+let g:rustfmt_autosave = 1
+
+" theme
+
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default': {
+  \       'transparent_background': 1
+  \     }
+  \   }
+  \ }
+
+set background=dark
+colorscheme PaperColor

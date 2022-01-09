@@ -49,3 +49,6 @@
 [submodule "pack/plugins/start/papercolor-theme"]
 	path = pack/plugins/start/papercolor-theme
 	url = https://github.com/NLKNguyen/papercolor-theme.git
+[submodule "pack/plugins/start/typescript-vim"]
+	path = pack/plugins/start/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git

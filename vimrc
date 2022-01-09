@@ -16,7 +16,7 @@ se modelines=5
 
 se wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
-au FileType bash,sh,zsh,javascript,ruby,eruby,html,vue,javascript.jsx,javascriptreact,json,yaml,less,css setl sw=2 ts=2 sts=2 et
+au FileType bash,sh,zsh,javascript,ruby,eruby,html,vue,javascript.jsx,javascriptreact,typescript,typescriptreact,json,yaml,less,css setl sw=2 ts=2 sts=2 et
 au FileType go,make setl noet sw=8 ts=8 sts=8
 au FileType python setl et sw=4 ts=4 sts=4
 au BufNewFile,BufRead *.wxml set filetype=html
